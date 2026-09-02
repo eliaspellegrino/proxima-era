@@ -53,10 +53,9 @@ html, body, #root {
   .background-layer {
     /* En PC lo oscurecemos un poco más (0.55) y usamos la imagen horizontal */
     /* Reemplaza image_1.png por el nombre exacto de tu archivo de PC */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('./images/desktop.jpeg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('./images/desktop.jpg');
     
     /* Mantenemos el desenfoque para disimular la baja calidad */
-    filter: blur(4px) contrast(1.1);
   }
 }
 

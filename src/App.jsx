@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 // El link de destino de tu embudo
-const nextEraUrl = 'https://TU-LINK-DE-DESTINO.com'; 
+const nextEraUrl = 'https://claude.ai/code/artifact/234b964b-9ca7-4b3e-89bc-484c32c0e5c5'; 
 
 function App() {
   

@@ -1,0 +1,97 @@
+/* src/App.css */
+
+/* 1. Reseteo total para eliminar márgenes fantasma */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden; /* Bloqueo estricto de scroll */
+}
+
+/* 2. SOLUCIÓN AL SCROLL: position fixed ancla el botón a la pantalla */
+.full-screen-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* --- CAPA DE FONDO --- */
+.background-layer {
+  position: absolute;
+  /* Expandimos un poco los bordes para que al hacer zoom o blur no se vea un marco blanco */
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  
+  /* 3. SOLUCIÓN AL FILTRO MÓVIL: Usamos linear-gradient para oscurecer de forma segura */
+  /* Reemplaza image_0.png por el nombre exacto de tu archivo móvil si es distinto */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./images/mobile.jpeg'); 
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  transition: transform 0.6s ease;
+}
+
+/* Filtros aplicados SOLO a desktop */
+@media (min-width: 768px) {
+  .background-layer {
+    /* En PC lo oscurecemos un poco más (0.55) y usamos la imagen horizontal */
+    /* Reemplaza image_1.png por el nombre exacto de tu archivo de PC */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('./images/desktop.jpeg');
+    
+    /* Mantenemos el desenfoque para disimular la baja calidad */
+    filter: blur(4px) contrast(1.1);
+  }
+}
+
+/* --- ESTILOS DEL TEXTO --- */
+.button-text {
+  position: relative;
+  z-index: 2;
+  color: #F8D12F;
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-shadow: 
+    3px 3px 10px rgba(0, 0, 0, 0.9), 
+    0 0 30px rgba(248, 209, 47, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* --- EFECTOS INTERACTIVOS (HOVER) --- */
+.full-screen-link:hover .background-layer {
+  transform: scale(1.05); 
+}
+
+.full-screen-link:hover .button-text {
+  transform: scale(1.05);
+  color: #FFE66D; 
+  text-shadow: 
+    3px 3px 15px rgba(0, 0, 0, 1), 
+    0 0 40px rgba(248, 209, 47, 0.8);
+}
+
+/* Ajustes del texto para móvil */
+@media (max-width: 767px) {
+  .button-text {
+    font-size: 2.5rem;
+    text-shadow: 
+      2px 2px 8px rgba(0, 0, 0, 0.9), 
+      0 0 20px rgba(248, 209, 47, 0.5);
+  }
+}
